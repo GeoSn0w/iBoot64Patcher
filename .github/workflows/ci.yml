@@ -16,7 +16,7 @@ jobs:
     env:
       PROCURSUS: /opt/procursus
       PATH: /opt/procursus/bin:/opt/procursus/libexec/gnubin:/usr/local/lib/ruby/gems/2.7.0/bin:/usr/local/opt/ruby@2.7/bin:/usr/local/opt/pipx_bin:/Users/runner/.cargo/bin:/usr/local/opt/curl/bin:/usr/local/bin:/usr/local/sbin:/Users/runner/bin:/Users/runner/.yarn/bin:/Users/runner/Library/Android/sdk/tools:/Users/runner/Library/Android/sdk/platform-tools:/Users/runner/Library/Android/sdk/ndk-bundle:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/usr/bin:/bin:/usr/sbin:/sbin:/Users/runner/.dotnet/tools:/Users/runner/.ghcup/bin:/Users/runner/hostedtoolcache/stack/2.7.3/x64
-    runs-on: macos-12
+    runs-on: macos-13
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -27,7 +27,7 @@ jobs:
       id: Update-Xcode
       uses: maxim-lobanov/setup-xcode@v1
       with:
-        xcode-version: '14.1.0'
+        xcode-version: '14.2'
     - name: macOS Build
       id: macOS-Build
       run: |
@@ -36,7 +36,7 @@ jobs:
         /Users/runner/work/iBoot64Patcher/iBoot64Patcher/.github/workflows/mac-post.sh
     - name: Versioning
       id: Versioning
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: Versioning
         path: |
@@ -44,28 +44,28 @@ jobs:
           /Users/runner/work/iBoot64Patcher/iBoot64Patcher/latest_build_num.txt
     - name: macOS x86_64 RELEASE Archive
       id: macOS-x86_64-RELEASE-Archive
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: iBoot64Patcher-macOS-x86_64-RELEASE
         path: |
           /Users/runner/work/iBoot64Patcher/iBoot64Patcher/iBoot64Patcher-macOS-x86_64-*-RELEASE.tar.xz
     - name: macOS x86_64 DEBUG Archive
       id: macOS-x86_64-DEBUG-Archive
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: iBoot64Patcher-macOS-x86_64-DEBUG
         path: |
           /Users/runner/work/iBoot64Patcher/iBoot64Patcher/iBoot64Patcher-macOS-x86_64-*-DEBUG.tar.xz
     - name: macOS arm64 RELEASE Archive
       id: macOS-arm64-RELEASE-Archive
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: iBoot64Patcher-macOS-arm64-RELEASE
         path: |
           /Users/runner/work/iBoot64Patcher/iBoot64Patcher/iBoot64Patcher-macOS-arm64-*-RELEASE.tar.xz
     - name: macOS arm64 DEBUG Archive
       id: macOS-arm64-DEBUG-Archive
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: iBoot64Patcher-macOS-arm64-DEBUG
         path: |
@@ -102,14 +102,14 @@ jobs:
           mv /home/runner/work/iBoot64Patcher/iBoot64Patcher/.github/workflows/iBoot64Patcher2.tar.xz /home/runner/work/iBoot64Patcher/iBoot64Patcher/.github/workflows/$(cat /home/runner/work/iBoot64Patcher/iBoot64Patcher/.github/workflows/name2.txt)
       - name: iBoot64Patcher Linux x86_64 RELEASE Archive
         id: iBoot64Patcher-Linux-x86_64-RELEASE-Archive
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: iBoot64Patcher-Linux-x86_64-RELEASE
           path: |
             /home/runner/work/iBoot64Patcher/iBoot64Patcher/.github/workflows/iBoot64Patcher-Linux-x86_64*-RELEASE.tar.xz
       - name: iBoot64Patcher Linux x86_64 DEBUG Archive
         id: iBoot64Patcher-Linux-x86_64-DEBUG-Archive
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: iBoot64Patcher-Linux-x86_64-DEBUG
           path: |
